@@ -1,5 +1,20 @@
 #!/bin/bash -x
 
+function resAscending(){
+   for (( i=1;i<=4;i++ ))
+   do
+      for (( j=1;j<=4;j++ ))
+      do
+         if [ ${array[$i]} -lt ${array[$j]} ]
+         then
+            temp=${array[$i]};
+            array[$i]=${array[$j]};
+            array[$j]=$temp;
+         fi
+      done
+   done
+}
+
 function resDescending(){
    for (( i=1;i<=4;i++ ))
    do
@@ -14,6 +29,7 @@ function resDescending(){
       done
    done
 }
+
 
 read -p "Enter a :" num1
 read -p "Enter b :" num2
@@ -31,5 +47,7 @@ do
 done
 
 #Function call
-resDescending 
+resAscending
+echo "${array[@]}"
+resDescending
 echo "${array[@]}"
